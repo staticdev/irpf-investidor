@@ -160,8 +160,8 @@ def test_get_trades() -> None:
         }
     )
     expected_result = [
-        ("10/10/2019 B    10 R$ 102,00", 0),
-        ("12/11/2019 S    100 R$ 3050,00", 1),
+        (0, "10/10/2019 B    10 R$ 102,00"),
+        (1, "12/11/2019 S    100 R$ 3050,00"),
     ]
     result = report_reader.get_trades(df)
     assert expected_result == result

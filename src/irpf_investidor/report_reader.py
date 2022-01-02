@@ -132,7 +132,7 @@ def clean_table_cols(source_df: pd.DataFrame) -> pd.DataFrame:
     return source_df.dropna(axis="columns", how="all")
 
 
-def get_trades(df: pd.DataFrame) -> list[tuple[str, int]]:
+def get_trades(df: pd.DataFrame) -> list[tuple[int, str]]:
     """Return trades representations.
 
     Args:
@@ -147,7 +147,7 @@ def get_trades(df: pd.DataFrame) -> list[tuple[str, int]]:
     df = df.drop(columns=["Valor Total (R$)"])
     list_of_list = df.astype(str).values.tolist()
     df = df.drop(columns=["total_cost_rs"])
-    return [(" ".join(x), i) for i, x in enumerate(list_of_list)]
+    return [(i, " ".join(x)) for i, x in enumerate(list_of_list)]
 
 
 def group_trades(df: pd.DataFrame) -> pd.DataFrame:
