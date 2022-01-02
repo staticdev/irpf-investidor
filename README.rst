@@ -103,6 +103,7 @@ Créditos
 
 Esse projeto foi gerado pelo template `@cjolowicz`_'s `Hypermodern Python Cookiecutter`_.
 
+.. _@cjolowicz: https://github.com/cjolowicz
 .. _python.org: https://www.python.org/downloads/
 .. _Área do Investidor: https://www.investidor.b3.com.br/area-do-investidor
 .. _PyPI: https://pypi.org/
