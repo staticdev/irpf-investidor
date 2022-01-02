@@ -1,0 +1,12 @@
+{
+  "_template": "gh:cjolowicz/cookiecutter-hypermodern-python",
+  "author": "staticdev",
+  "development_status": "Development Status :: 5 - Production/Stable",
+  "email": "staticdev-support@protonmail.com",
+  "friendly_name": "IRPF Investidor",
+  "github_user": "staticdev",
+  "license": "MIT",
+  "package_name": "irpf_investidor",
+  "project_name": "irpf-investidor",
+  "version": "1.0.0"
+}
