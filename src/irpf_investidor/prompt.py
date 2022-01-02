@@ -1,44 +1,36 @@
 """Prompt module."""
 from __future__ import annotations
 
-from typing import Any
-
-import inquirer
+import prompt_toolkit.shortcuts as shortcuts
 
 
-def select_trades(trades: list[tuple[str, int]]) -> Any:
+TITLE = "IRPF Investidor"
+
+
+def select_trades(trades: list[tuple[int, str]]) -> list[int]:
     """Checkbox selection of auction trades.
 
     Args:
-        trades (list[tuple[str, int]]): list of all trades and indexes.
+        trades: list of all trades and indexes.
 
     Returns:
-        Any: list of indexes of selected auction trades.
+        list of string indexes of selected auction trades.
     """
+    text = (
+        "Informe as operações realizadas em horário de leilão para cálculo dos "
+        "emolumentos.\nEssa informação é obtida através de sua corretora."
+    )
     while True:
-        selection = inquirer.prompt(
-            [
-                inquirer.Checkbox(
-                    "trades",
-                    message=(
-                        "Quais operações foram realizadas em horário de leilão? "
-                        "(Selecione apertando espaço e ao terminar aperte enter)"
-                    ),
-                    choices=trades,
-                )
-            ]
-        )["trades"]
-        if len(selection) == 0:
-            answer = inquirer.prompt(
-                [
-                    inquirer.List(
-                        "",
-                        message="Nenhuma operação selecionada.\nIsso está correto?",
-                        choices=["Sim", "Não"],
-                    )
-                ]
-            )[""]
-            if answer == "Sim":
+        operations: list[int] = shortcuts.checkboxlist_dialog(
+            title=TITLE,
+            text=text,
+            values=trades,  # type: ignore
+        ).run()
+        if not operations or len(operations) == 0:
+            confirmed = shortcuts.yes_no_dialog(
+                title=TITLE, text="Nenhuma operação selecionada.\nIsso está correto?"
+            ).run()
+            if confirmed:
                 return []
         else:
-            return selection
+            return operations

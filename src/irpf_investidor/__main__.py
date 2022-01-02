@@ -29,15 +29,6 @@ def main() -> None:
     source_df = irpf_investidor.report_reader.clean_table_cols(source_df)
     source_df = irpf_investidor.report_reader.group_trades(source_df)
     trades = irpf_investidor.report_reader.get_trades(source_df)
-
-    click.secho(
-        (
-            "Para o cálculo dos emolumentos é necessário informar operações"
-            "realizadas em horário de leilão. Essa informação é obtida com "
-            "a sua corretora através de relatórios de ordem de compra."
-        ),
-        fg="green",
-    )
     auction_trades = prompt.select_trades(trades)
     tax_df = irpf_investidor.report_reader.calculate_taxes(source_df, auction_trades)
     irpf_investidor.report_reader.output_taxes(tax_df)

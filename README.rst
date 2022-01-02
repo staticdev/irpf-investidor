@@ -50,7 +50,7 @@ Instale na sua máquina o Python 3.8.0 ou superior (versão 3.10 recomendada) pa
 
 Usuários do Windows devem baixar a versão `Windows x86-64 executable installer` e na tela de instalação marcar a opção `Add Python 3.8 to PATH`:
 
-.. image:: docs/_images/winpath.png
+.. image:: docs/images/winpath.png
   :width: 400
   :alt: Checkbox PATH na instalação Windows
 
