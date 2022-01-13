@@ -611,7 +611,7 @@ toml = ["toml"]
 
 [[package]]
 name = "pyfakefs"
-version = "4.5.3"
+version = "4.5.4"
 description = "pyfakefs implements a fake file system that mocks the Python file system modules."
 category = "dev"
 optional = false
@@ -1471,8 +1471,8 @@ pydocstyle = [
     {file = "pydocstyle-6.1.1.tar.gz", hash = "sha256:1d41b7c459ba0ee6c345f2eb9ae827cab14a7533a88c5c6f7e94923f72df92dc"},
 ]
 pyfakefs = [
-    {file = "pyfakefs-4.5.3-py3-none-any.whl", hash = "sha256:501d784c6ad57ce7ab727249166d58043d199ebbb67b404ecab67bcb1a9bb696"},
-    {file = "pyfakefs-4.5.3.tar.gz", hash = "sha256:f49db689c1d5db6172131479ca77bd474ba2cb886c869b9867fb89cdab2df397"},
+    {file = "pyfakefs-4.5.4-py3-none-any.whl", hash = "sha256:e0cc0d22cb74badf4fb2143a112817d7aea1a58ee9dca015a68bf38c3691cb52"},
+    {file = "pyfakefs-4.5.4.tar.gz", hash = "sha256:5b5951e873f73bf12e3a19d8e4470c4b7962c51df753cf8c4caaf64e24a0a323"},
 ]
 pyflakes = [
     {file = "pyflakes-2.4.0-py2.py3-none-any.whl", hash = "sha256:3bb3a3f256f4b7968c9c788781e4ff07dce46bdf12339dcda61053375426ee2e"},
