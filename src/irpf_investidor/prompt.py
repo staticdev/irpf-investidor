@@ -24,7 +24,7 @@ def select_trades(trades: list[tuple[int, str]]) -> list[int]:
         operations: list[int] = shortcuts.checkboxlist_dialog(
             title=TITLE,
             text=text,
-            values=trades,  # type: ignore
+            values=trades,
         ).run()
         if not operations or len(operations) == 0:
             confirmed = shortcuts.yes_no_dialog(
