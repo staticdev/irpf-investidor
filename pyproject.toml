@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "irpf-investidor"
-version = "2021.1"
+version = "2021.2"
 description = "IRPF Investidor"
 authors = ["staticdev <staticdev-support@protonmail.com>"]
 license = "MIT"
