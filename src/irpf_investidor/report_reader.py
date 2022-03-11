@@ -47,7 +47,11 @@ def validate_period(first: str, second: str) -> int:
     """Consider the year from the first trade date."""
     first_year = int(first[-4:])
     second_year = int(second[-4:])
-    if first_year <= second_year and first_year >= FIRST_IMPLEMENTED_YEAR and second_year <= LAST_IMPLEMENTED_YEAR:
+    if (
+        first_year <= second_year
+        and first_year >= FIRST_IMPLEMENTED_YEAR
+        and second_year <= LAST_IMPLEMENTED_YEAR
+    ):
         return second_year
     return sys.exit(
         f"Erro: o período de {first} a {second} não é válido, favor verificar "
