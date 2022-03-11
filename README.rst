@@ -38,7 +38,7 @@ IRPF Investidor
 
 Programa auxiliar para calcular custos de ações, ETFs e FIIs. Este programa foi feito para calcular emolumentos, taxa de liquidação e custo total para a declaração de Bens e Direitos do Imposto de Renda Pessoa Física.
 
-**Essa aplicação foi testada e configurada para calcular tarifas referentes aos anos de 2019 a 2020 (IRPF 2020/2021) e não faz cálculos para compra e venda no mesmo dia (Day Trade), contratos futuros e Índice Brasil 50.**
+**Essa aplicação foi testada e configurada para calcular tarifas referentes aos anos de 2019 a 2021 (IRPF 2020/2022) e não faz cálculos para compra e venda no mesmo dia (Day Trade), contratos futuros e Índice Brasil 50.**
 
 
 Requisitos
@@ -77,6 +77,8 @@ Uso
 ---
 
 1. Entre na `Área do Investidor`_ da B3, faça login e entre no menu Extratos e Informativos → Negociação de Ativos → Escolha uma corretora e as datas 1 de Janeiro e 31 de Dezembro do ano em que deseja declarar. Em seguida clique no botão “Exportar para EXCEL”. Ele irá baixar o arquivo “InfoCEI.xls”.
+
+**Ainda não é possível rodar o programa usando os novos arquivos XLSX, gerar no formato antigo.**
 
 Você pode combinar lançamentos de anos diferentes em um mesmo documento colando as linhas de um relatório em outro, mas mantenha a ordem cronológica.
 

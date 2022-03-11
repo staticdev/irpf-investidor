@@ -90,9 +90,9 @@ def test_get_xls_filename_download_folder(
 def test_validate_period_success() -> None:
     """Return reference year."""
     first_date = "01/01/2019"
-    second_date = "31/12/2020"
+    second_date = "31/12/2021"
 
-    assert report_reader.validate_period(first_date, second_date) == 2020
+    assert report_reader.validate_period(first_date, second_date) == 2021
 
 
 def test_validate_period_wrong_start_finish() -> None:
