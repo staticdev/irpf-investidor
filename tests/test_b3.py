@@ -27,6 +27,13 @@ def test_get_asset_info_stock() -> None:
     assert asset_info.cnpj == "33.000.167/0001-01"
 
 
+def test_get_asset_info_stock_fractionary() -> None:
+    """Return STOCKS."""
+    asset_info = b3.get_asset_info("PETR4F")
+    assert asset_info.category == "STOCKS"
+    assert asset_info.cnpj == "33.000.167/0001-01"
+
+
 def test_get_asset_info_not_found() -> None:
     """Return NOT_FOUND."""
     asset_info = b3.get_asset_info("OMG3M3")

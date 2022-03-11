@@ -71,7 +71,7 @@ EMOLUMENTOS_PERIODS = [
         datetime.datetime(2020, 11, 1), datetime.datetime(2020, 12, 1), 0.00003247
     ),
     RatePeriod(
-        datetime.datetime(2020, 12, 1), datetime.datetime(2021, 1, 1), 0.00003020
+        datetime.datetime(2020, 12, 1), datetime.datetime(2022, 1, 1), 0.00003020
     ),
 ]
 EMOLUMENTOS_AUCTION_RATE = 0.00007
@@ -699,6 +699,10 @@ def get_asset_info(code: str) -> AssetInfo:
         AssetInfo: category and cnpj.
     """
     if code in STOCKS:
+        return AssetInfo("STOCKS", STOCKS[code])
+    # STOCKS CAN END IN F
+    elif code.endswith("F") and code[:-1] in STOCKS:
+        code = code[:-1]
         return AssetInfo("STOCKS", STOCKS[code])
     # ETF and FII code can end in 11 or 11B
     if len(code) == 6 and code.endswith("11"):
