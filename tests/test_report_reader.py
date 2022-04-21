@@ -208,9 +208,9 @@ def test_group_trades() -> None:
 
 def test_calculate_taxes_2019(mocker: MockerFixture) -> None:
     """Return calculated taxes."""
-    mocker.patch("irpf_investidor.b3.get_trading_rate", return_value=0.000275)
+    mocker.patch("irpf_investidor.b3.get_liquidacao_rates", return_value=0.000275)
     mocker.patch(
-        "irpf_investidor.b3.get_emoluments_rates",
+        "irpf_investidor.b3.get_emolumentos_rates",
         return_value=[0.00004105, 0.00004105, 0.00004105],
     )
     df = pd.DataFrame(

@@ -182,18 +182,19 @@ def calculate_taxes(df: pd.DataFrame, auction_trades: list[int]) -> pd.DataFrame
     """Calculate emolumentos and liquidação taxes based on reference year.
 
     Args:
-        df (pd.DataFrame): grouped trades.
-        auction_trades (List[int]): list of auction trades.
+        df: grouped trades.
+        auction_trades: list of auction trades.
 
     Returns:
         pd.DataFrame: trades with two new columns of calculated taxes.
     """
     df["Liquidação (R$)"] = (
-        df["Valor Total (R$)"] * irpf_investidor.b3.get_trading_rate()
+        df["Valor Total (R$)"]
+        * irpf_investidor.b3.get_liquidacao_rates(df["Data Negócio"].array)
     ).apply(round_down_money)
     df["Emolumentos (R$)"] = (
         df["Valor Total (R$)"]
-        * irpf_investidor.b3.get_emoluments_rates(
+        * irpf_investidor.b3.get_emolumentos_rates(
             df["Data Negócio"].array, auction_trades
         )
     ).apply(round_down_money)
