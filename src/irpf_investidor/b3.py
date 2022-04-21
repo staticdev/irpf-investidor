@@ -70,9 +70,7 @@ EMOLUMENTOS_PERIODS = [
     RatePeriod(
         datetime.datetime(2020, 11, 1), datetime.datetime(2021, 2, 2), 0.00003247
     ),
-    RatePeriod(
-        datetime.datetime(2021, 2, 2), datetime.datetime(2022, 1, 1), 0.00005
-    ),
+    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2022, 1, 1), 0.00005),
 ]
 EMOLUMENTOS_AUCTION_RATE = 0.00007
 LIQUIDACAO_PERIODS = [
