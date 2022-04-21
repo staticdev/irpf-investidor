@@ -68,14 +68,17 @@ EMOLUMENTOS_PERIODS = [
         datetime.datetime(2020, 10, 1), datetime.datetime(2020, 11, 1), 0.00003219
     ),
     RatePeriod(
-        datetime.datetime(2020, 11, 1), datetime.datetime(2020, 12, 1), 0.00003247
+        datetime.datetime(2020, 11, 1), datetime.datetime(2021, 2, 2), 0.00003247
     ),
     RatePeriod(
-        datetime.datetime(2020, 12, 1), datetime.datetime(2022, 1, 1), 0.00003020
+        datetime.datetime(2021, 2, 2), datetime.datetime(2022, 1, 1), 0.00005
     ),
 ]
 EMOLUMENTOS_AUCTION_RATE = 0.00007
-LIQUIDACAO_RATE = 0.000275
+LIQUIDACAO_PERIODS = [
+    RatePeriod(datetime.datetime(2019, 1, 3), datetime.datetime(2021, 2, 2), 0.000275),
+    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2022, 1, 1), 0.00025),
+]
 
 AssetInfo = collections.namedtuple("AssetInfo", ["category", "cnpj"])
 
@@ -716,26 +719,41 @@ def get_asset_info(code: str) -> AssetInfo:
     return AssetInfo("NOT_FOUND", "")
 
 
-def get_trading_rate() -> float:
-    """Return fixes trading rate.
-
-    Returns:
-        float: constant float.
-    """
-    return LIQUIDACAO_RATE
-
-
-def get_emoluments_rates(
-    dates: list[datetime.datetime], auction_trades: list[int]
-) -> list[float]:
-    """Get the list of emuluments rates.
+def get_liquidacao_rates(dates: list[datetime.datetime]) -> list[float]:
+    """Get the list of liquidação rates.
 
     Args:
-        dates (List[datetime.datetime]): list of trade days.
-        auction_trades (List[int]): list of indexes of trades in auction.
+        dates: list of trade days.
 
     Returns:
-        List[float]: list of rates.
+        list of rates.
+    """
+    rates = []
+    last_period = 0
+    for date in dates:
+        for idx_period, period in enumerate(
+            LIQUIDACAO_PERIODS[last_period:], start=last_period
+        ):
+            if period.start_date <= date <= period.end_date:
+                last_period = idx_period
+                rates.append(period.rate)
+                break
+        else:
+            sys.exit(f"Nenhum período de liquidação encontrado para a data: {date}")
+    return rates
+
+
+def get_emolumentos_rates(
+    dates: list[datetime.datetime], auction_trades: list[int]
+) -> list[float]:
+    """Get the list of emolumentos rates.
+
+    Args:
+        dates: list of trade days.
+        auction_trades: list of indexes of trades in auction.
+
+    Returns:
+        list of rates.
     """
     rates = []
     last_period = 0
