@@ -107,7 +107,7 @@ Esse projeto foi gerado pelo template `@cjolowicz`_'s `Hypermodern Python Cookie
 
 .. _@cjolowicz: https://github.com/cjolowicz
 .. _python.org: https://www.python.org/downloads/
-.. _Área do Investidor: https://www.investidor.b3.com.br/area-do-investidor
+.. _Área do Investidor: https://www.investidor.b3.com.br/
 .. _Hypermodern Python Cookiecutter: https://github.com/cjolowicz/cookiecutter-hypermodern-python
 .. _PyPI: https://pypi.org/
 .. _pip: https://pip.pypa.io/
