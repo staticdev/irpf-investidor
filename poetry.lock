@@ -893,7 +893,7 @@ docs = ["furo", "myst-parser", "sphinx-copybutton", "sphinx-inline-tabs", "ipyth
 
 [[package]]
 name = "sphinx-click"
-version = "4.2.0"
+version = "4.3.0"
 description = "Sphinx extension that automatically documents click applications"
 category = "dev"
 optional = false
@@ -1640,8 +1640,8 @@ sphinx-basic-ng = [
     {file = "sphinx_basic_ng-0.0.1a11.tar.gz", hash = "sha256:bf9a8fda0379c7d2ab51c9543f2b18e014b77fb295b49d64f3c1a910c863b34f"},
 ]
 sphinx-click = [
-    {file = "sphinx-click-4.2.0.tar.gz", hash = "sha256:8429705474ebb009de5603c35b6a7bfe8501dbdb12d847cbb01f18277d4b7d9a"},
-    {file = "sphinx_click-4.2.0-py3-none-any.whl", hash = "sha256:3ba8c97a40deaf09245c540accc4ac5c1d2942eaed0fa598403cdbf04a9cf95f"},
+    {file = "sphinx-click-4.3.0.tar.gz", hash = "sha256:bd4db5d3c1bec345f07af07b8e28a76cfc5006d997984e38ae246bbf8b9a3b38"},
+    {file = "sphinx_click-4.3.0-py3-none-any.whl", hash = "sha256:23e85a3cb0b728a421ea773699f6acadefae171d1a764a51dd8ec5981503ccbe"},
 ]
 sphinxcontrib-applehelp = [
     {file = "sphinxcontrib-applehelp-1.0.2.tar.gz", hash = "sha256:a072735ec80e7675e3f432fcae8610ecf509c5f1869d17e2eecff44389cdbc58"},
