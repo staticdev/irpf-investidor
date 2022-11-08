@@ -26,8 +26,7 @@ def test_set_pt_br_locale_error(mocker: MockerFixture) -> None:
 
 def test_get_currency_format(mocker: MockerFixture) -> None:
     """Give no error."""
-    mocker.patch("locale.currency")
-    assert formatting.get_currency_format()
+    formatting.get_currency_format()
 
 
 def test_fmt_money_no_padding() -> None:
