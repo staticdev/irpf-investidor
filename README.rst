@@ -48,7 +48,7 @@ Requisitos
 
 Instale na sua máquina o Python 3.9.0 ou superior (versão 3.11 recomendada) para o seu sistema operacional em python.org_.
 
-Usuários do Windows devem baixar a versão `Windows x86-64 executable installer` e na tela de instalação marcar a opção `Add Python 3.8 to PATH`:
+Usuários do Windows devem baixar a versão `Windows x86-64 executable installer` e na tela de instalação marcar a opção `Add Python 3.9 to PATH`:
 
 .. image:: docs/images/winpath.png
   :width: 400
