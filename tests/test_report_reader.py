@@ -8,7 +8,6 @@ from pytest_mock import MockerFixture
 
 import irpf_investidor.report_reader as report_reader
 
-
 B3_REPORT_NAME = "InfoCEI.xls"
 
 

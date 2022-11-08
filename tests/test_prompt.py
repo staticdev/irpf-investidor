@@ -4,7 +4,6 @@ from pytest_mock import MockerFixture
 
 import irpf_investidor.prompt as prompt
 
-
 TRADES = [(0, "trade 1"), (0, "trade 2")]
 
 

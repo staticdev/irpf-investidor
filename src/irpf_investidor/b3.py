@@ -5,7 +5,6 @@ import collections
 import datetime
 import sys
 
-
 RatePeriod = collections.namedtuple("RatePeriod", ["start_date", "end_date", "rate"])
 
 EMOLUMENTOS_PERIODS = [
