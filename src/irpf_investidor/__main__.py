@@ -1,6 +1,4 @@
 """Command-line interface."""
-from __future__ import annotations
-
 import click
 
 import irpf_investidor.formatting
