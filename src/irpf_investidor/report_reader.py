@@ -13,7 +13,6 @@ import xlrd
 import irpf_investidor.b3
 import irpf_investidor.formatting
 
-
 IRPF_INVESTIMENT_CODES = {
     "ETF": "74 (ETF)",
     "FII": "73 (FII)",
