@@ -1,6 +1,4 @@
 """Report reader."""
-from __future__ import annotations
-
 import datetime
 import glob
 import math

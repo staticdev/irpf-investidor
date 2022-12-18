@@ -1,6 +1,4 @@
 """Response objects."""
-from __future__ import annotations
-
 from typing import Any
 
 
@@ -17,7 +15,7 @@ class ResponseFailure:
     """Response failure class."""
 
     def __init__(self, type_: str, message: str | Exception | None) -> None:
-        """Constructor."""
+        """Construct."""
         self.type = type_
         self.message = self._format_message(message)
 
@@ -52,7 +50,7 @@ class ResponseSuccess:
     """Response success class."""
 
     def __init__(self, value: Any = None) -> None:
-        """Constructor."""
+        """Construct."""
         self.type = ResponseTypes.SUCCESS
         self.value = value
 

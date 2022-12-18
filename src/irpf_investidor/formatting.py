@@ -1,6 +1,4 @@
 """Formatting module."""
-from __future__ import annotations
-
 import locale
 import math
 from typing import Any, Callable
@@ -9,8 +7,8 @@ import irpf_investidor.responses as res
 
 
 def set_pt_br_locale() -> res.ResponseFailure | res.ResponseSuccess:
-    """Sets pt_BR locale."""
-    # one gets available locale from shell `locale -a`
+    """Set pt_BR locale."""
+    # Get available locale from shell `locale -a`
     supported_locales = ["pt_BR.utf8", "pt_BR.UTF-8"]
     for loc in supported_locales:
         try:

@@ -1,6 +1,4 @@
 """B3 module."""
-from __future__ import annotations
-
 import collections
 import datetime
 import sys
