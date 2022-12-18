@@ -118,9 +118,7 @@ def round_down_money(n: float, decimals: int = 2) -> float:
         float: rounded number.
     """
     multiplier = 10**decimals
-    # Type-hint for floor won't work until Python 3.9
-    # https://github.com/python/typeshed/issues/3195
-    return math.floor(n * multiplier) / multiplier  # type: ignore
+    return math.floor(n * multiplier) / multiplier
 
 
 def clean_table_cols(source_df: pd.DataFrame) -> pd.DataFrame:
