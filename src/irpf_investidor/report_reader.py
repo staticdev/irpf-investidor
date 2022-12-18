@@ -118,7 +118,7 @@ def round_down_money(n: float, decimals: int = 2) -> float:
         float: rounded number.
     """
     multiplier = 10**decimals
-    return math.floor(n * multiplier) / multiplier
+    return math.floor(n * multiplier) / multiplier  # type: ignore
 
 
 def clean_table_cols(source_df: pd.DataFrame) -> pd.DataFrame:
