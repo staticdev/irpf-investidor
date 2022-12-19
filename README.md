@@ -40,7 +40,7 @@ Usuários do Windows devem baixar a versão `Windows x86-64 executable installer
 
 Pode ser instalado no Linux (Debian/Ubuntu) pelo comando:
 
-```console
+```sh
 $ apt-get install language-pack-pt-base
 ```
 
@@ -48,7 +48,7 @@ $ apt-get install language-pack-pt-base
 
 You can install _IRPF Investidor_ via [pip] from [PyPI]:
 
-```console
+```sh
 $ pip install irpf-investidor
 ```
 
@@ -62,7 +62,7 @@ Você pode combinar lançamentos de anos diferentes em um mesmo documento coland
 
 2. Execute o programa através do comando:
 
-```console
+```sh
 $ irpf-investidor
 ```
 
@@ -78,8 +78,9 @@ Esta é uma ferramenta com código aberto e gratuita, com licença MIT. Você po
 
 Esse projeto foi gerado pelo template [@cjolowicz]'s [Hypermodern Python Cookiecutter].
 
-% github-only
+<!-- github-only -->
 
+[license]: https://github.com/staticdev/irpf-investidor/blob/main/LICENSE
 [@cjolowicz]: https://github.com/cjolowicz
 [hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
 [pip]: https://pip.pypa.io/
