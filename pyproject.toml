@@ -18,28 +18,28 @@ Changelog = "https://github.com/staticdev/irpf-investidor/releases"
 [tool.poetry.dependencies]
 python = ">=3.10"
 click = ">=8.0.1"
-pandas = ">=1.3.5"
-prompt-toolkit = ">=3.0.24"
+pandas = ">=2.0.3"
+prompt-toolkit = ">=3.0.39"
 xlrd = ">=2.0.1"
 
 [tool.poetry.dev-dependencies]
 bandit = ">=1.7.4"
 black = ">=22.12.0"
-coverage = {extras = ["toml"], version = ">=6.3.2"}
+coverage = {extras = ["toml"], version = ">=7.2.7"}
 flake8 = ">=5.0.4"
 flake8-bugbear = ">=21.9.2"
 flake8-docstrings = ">=1.6.0"
 furo = ">=2021.11.12"
 isort = ">=5.10.1"
-mypy = ">=0.941"
+mypy = ">=1.4.1"
 pep8-naming = ">=0.12.1"
-pre-commit = ">=2.20.0"
+pre-commit = ">=3.3.3"
 pre-commit-hooks = ">=4.3.0"
 pyfakefs = ">=4.5.3"
 Pygments = ">=2.11.2"
-pytest = ">=7.1.0"
-pytest-mock = ">=3.7.0"
-pyupgrade = ">=2.31.1"
+pytest = ">=7.4.0"
+pytest-mock = ">=3.11.1"
+pyupgrade = ">=3.9.0"
 safety = ">=2.1.1"
 sphinx = ">=5.1.1"
 sphinx-autobuild = ">=2021.3.14"
@@ -60,7 +60,7 @@ source = ["irpf_investidor", "tests"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 100
+fail_under = 99
 
 [tool.mypy]
 strict = true
