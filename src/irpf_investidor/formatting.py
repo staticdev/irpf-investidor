@@ -1,7 +1,7 @@
 """Formatting module."""
 import locale
 import math
-from typing import Any, Callable
+from typing import Callable
 
 import irpf_investidor.responses as res
 
@@ -22,12 +22,8 @@ def set_pt_br_locale() -> res.ResponseFailure | res.ResponseSuccess:
     )
 
 
-def get_currency_format() -> Callable[[Any], str]:
-    """Return currency function.
-
-    Returns:
-        Callable[[Any], str]: function from current locale.
-    """
+def get_currency_format() -> Callable[..., str]:
+    """Return currency function."""
     return locale.currency
 
 

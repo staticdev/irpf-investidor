@@ -23,7 +23,7 @@ def test_select_trades_empty(
     mock_checkboxlist_dialog: MockerFixture, mock_yes_no_dialog: MockerFixture
 ) -> None:
     """It returns empty list."""
-    mock_checkboxlist_dialog.return_value.run.side_effect = [[], None]
+    mock_checkboxlist_dialog.return_value.run.side_effect = [[], []]
     mock_yes_no_dialog.return_value.run.side_effect = [False, True]
 
     result = prompt.select_trades(TRADES)

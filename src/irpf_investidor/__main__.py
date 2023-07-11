@@ -6,8 +6,8 @@ import irpf_investidor.prompt as prompt
 import irpf_investidor.report_reader
 
 
-@click.command()
 @click.version_option()
+@click.command()
 def main() -> None:
     """Sequecence of operations for trades."""
     response = irpf_investidor.formatting.set_pt_br_locale()
@@ -37,4 +37,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()  # pragma: no cover
+    main()  # type: ignore[misc]
