@@ -1602,20 +1602,20 @@ files = [
 
 [[package]]
 name = "typeguard"
-version = "4.0.0"
+version = "4.0.1"
 description = "Run-time type checker for Python"
 optional = false
 python-versions = ">=3.7.4"
 files = [
-    {file = "typeguard-4.0.0-py3-none-any.whl", hash = "sha256:c4a40af0ba8a41077221271b46d0a6d8d46045443e4d887887c69254ca861952"},
-    {file = "typeguard-4.0.0.tar.gz", hash = "sha256:194fb3dbcb06ea9caf7088f3befee014de57961689f9c859ac5239b1ef61d987"},
+    {file = "typeguard-4.0.1-py3-none-any.whl", hash = "sha256:43f55cc9953f26dae362adb973b6c9ad6b97bfffcc6757277912eddd5cfa345b"},
+    {file = "typeguard-4.0.1.tar.gz", hash = "sha256:db35142d1f92fc8c1b954e5cc03b57810428f9cd4e4604647bdf5764fc5bbba9"},
 ]
 
 [package.dependencies]
-typing-extensions = {version = ">=4.4.0", markers = "python_version < \"3.11\""}
+typing-extensions = {version = ">=4.7.0", markers = "python_version < \"3.12\""}
 
 [package.extras]
-doc = ["packaging", "sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme"]
+doc = ["Sphinx (<7)", "packaging", "sphinx-autodoc-typehints (>=1.2.0)", "sphinx-rtd-theme"]
 test = ["mypy (>=1.2.0)", "pytest (>=7)"]
 
 [[package]]
