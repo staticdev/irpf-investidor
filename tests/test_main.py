@@ -135,4 +135,4 @@ def test_main_locale_fail(
     result = runner.invoke(__main__.main)
 
     assert result.output.startswith("Erro: locale xyz não encontrado.")
-    assert type(result.exception) == SystemExit
+    assert isinstance(result.exception, SystemExit)
