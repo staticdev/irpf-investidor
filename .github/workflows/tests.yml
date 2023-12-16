@@ -140,8 +140,7 @@ jobs:
 
       - name: Combine coverage data and display human readable report
         run: |
-          echo $SHELL
-          ls -lha coverage-data-3.10-windows-latest
+          shopt -s dotglob
           mv coverage-data-3.10-windows-latest/* .
           mv coverage-data-3.12-ubuntu-latest/* .
           mv coverage-data-3.11-ubuntu-latest/* .
