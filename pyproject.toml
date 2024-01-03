@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "irpf-investidor"
-version = "2023.28.9"
+version = "2024.1.3"
 description = "IRPF Investidor"
 authors = ["staticdev <staticdev-support@proton.me>"]
 license = "MIT"
@@ -17,9 +17,9 @@ Changelog = "https://github.com/staticdev/irpf-investidor/releases"
 
 [tool.poetry.dependencies]
 python = ">=3.10"
-click = ">=8.0.1"
-pandas = ">=2.1.3"
-prompt-toolkit = ">=3.0.41"
+click = ">=8.1.7"
+pandas = ">=2.1.4"
+prompt-toolkit = ">=3.0.43"
 xlrd = ">=2.0.1"
 
 [tool.poetry.dev-dependencies]

@@ -5,6 +5,7 @@ import sys
 
 RatePeriod = collections.namedtuple("RatePeriod", ["start_date", "end_date", "rate"])
 
+# Ref: https://www.b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/renda-variavel/tarifas-de-acoes-e-fundos-de-investimento/a-vista/  # noqa: B950
 EMOLUMENTOS_PERIODS = [
     RatePeriod(
         datetime.datetime(2019, 1, 3), datetime.datetime(2019, 2, 1), 0.00004476
@@ -67,12 +68,12 @@ EMOLUMENTOS_PERIODS = [
     RatePeriod(
         datetime.datetime(2020, 11, 1), datetime.datetime(2021, 2, 2), 0.00003247
     ),
-    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2023, 5, 1), 0.00005),
+    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2024, 1, 3), 0.00005),
 ]
 EMOLUMENTOS_AUCTION_RATE = 0.00007
 LIQUIDACAO_PERIODS = [
     RatePeriod(datetime.datetime(2019, 1, 3), datetime.datetime(2021, 2, 2), 0.000275),
-    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2023, 5, 1), 0.00025),
+    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2024, 1, 3), 0.00025),
 ]
 
 AssetInfo = collections.namedtuple("AssetInfo", ["category", "cnpj"])
