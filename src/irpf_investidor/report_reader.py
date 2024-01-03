@@ -18,7 +18,7 @@ IRPF_INVESTIMENT_CODES = {
     "NOT_FOUND": "Não encontrado",
 }
 FIRST_IMPLEMENTED_YEAR = 2019
-LAST_IMPLEMENTED_YEAR = 2022
+LAST_IMPLEMENTED_YEAR = 2023
 
 
 def get_xls_filename() -> str:
