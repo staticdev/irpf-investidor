@@ -1,4 +1,5 @@
 """Test cases for response objects."""
+
 import irpf_investidor.responses as res
 
 SUCCESS_VALUE = {"key": ["value1", "value2"]}

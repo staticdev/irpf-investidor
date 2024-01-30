@@ -1,4 +1,5 @@
 """Test cases for the __main__ module."""
+
 import click.testing
 import pytest
 from pytest_mock import MockerFixture

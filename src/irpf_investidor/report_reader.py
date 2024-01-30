@@ -1,4 +1,5 @@
 """Report reader."""
+
 import datetime
 import glob
 import math

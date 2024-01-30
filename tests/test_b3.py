@@ -1,4 +1,5 @@
 """Test cases for the B3 module."""
+
 import datetime
 
 import pytest
