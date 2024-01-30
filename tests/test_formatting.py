@@ -1,4 +1,5 @@
 """Test cases for formatting module."""
+
 import locale
 
 from pytest_mock import MockerFixture

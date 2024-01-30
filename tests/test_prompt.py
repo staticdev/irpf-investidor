@@ -1,4 +1,5 @@
 """Test cases for prompt module."""
+
 import pytest
 from pytest_mock import MockerFixture
 

@@ -1,4 +1,5 @@
 """Test cases for the report reader module."""
+
 import datetime
 import os
 

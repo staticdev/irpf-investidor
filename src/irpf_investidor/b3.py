@@ -1,4 +1,5 @@
 """B3 module."""
+
 import collections
 import datetime
 import sys

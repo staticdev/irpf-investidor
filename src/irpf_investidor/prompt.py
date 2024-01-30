@@ -1,4 +1,5 @@
 """Prompt module."""
+
 import prompt_toolkit.shortcuts as shortcuts
 
 TITLE = "IRPF Investidor"

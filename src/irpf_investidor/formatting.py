@@ -1,4 +1,5 @@
 """Formatting module."""
+
 import locale
 import math
 from typing import Callable
