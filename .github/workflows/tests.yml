@@ -12,18 +12,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { python: "3.12", os: "ubuntu-latest", session: "pre-commit" }
+          - { python: "3.13", os: "ubuntu-latest", session: "pre-commit" }
+          - { python: "3.13", os: "ubuntu-latest", session: "mypy" }
           - { python: "3.12", os: "ubuntu-latest", session: "mypy" }
           - { python: "3.11", os: "ubuntu-latest", session: "mypy" }
-          - { python: "3.10", os: "ubuntu-latest", session: "mypy" }
+          - { python: "3.13", os: "ubuntu-latest", session: "tests" }
           - { python: "3.12", os: "ubuntu-latest", session: "tests" }
           - { python: "3.11", os: "ubuntu-latest", session: "tests" }
-          - { python: "3.10", os: "ubuntu-latest", session: "tests" }
-          - { python: "3.10", os: "windows-latest", session: "tests" }
-          - { python: "3.12", os: "macos-latest", session: "tests" }
-          - { python: "3.12", os: "ubuntu-latest", session: "typeguard" }
-          - { python: "3.12", os: "ubuntu-latest", session: "xdoctest" }
-          - { python: "3.12", os: "ubuntu-latest", session: "docs-build" }
+          - { python: "3.11", os: "windows-latest", session: "tests" }
+          - { python: "3.13", os: "macos-latest", session: "tests" }
+          - { python: "3.13", os: "ubuntu-latest", session: "typeguard" }
+          - { python: "3.13", os: "ubuntu-latest", session: "xdoctest" }
+          - { python: "3.13", os: "ubuntu-latest", session: "docs-build" }
 
     env:
       NOXSESSION: ${{ matrix.session }}
@@ -93,11 +93,12 @@ jobs:
           nox --force-color --python=${{ matrix.python }}
 
       - name: Upload coverage data
-        if: always() && matrix.session == 'tests'
+        if: always() && matrix.session == 'tests' && matrix.os == 'ubuntu-latest'
         uses: "actions/upload-artifact@v4"
         with:
           name: coverage-data-${{ matrix.python }}-${{ matrix.os }}
-          path: ".coverage.*"
+          path: .coverage.*
+          include-hidden-files: true
 
       - name: Upload documentation
         if: matrix.session == 'docs-build'
@@ -116,7 +117,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: Upgrade pip
         run: |
