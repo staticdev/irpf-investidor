@@ -24,14 +24,18 @@ def test_response_success_has_type_and_value() -> None:
 
 def test_response_failure_is_false() -> None:
     """It has bool value of False."""
-    response = res.ResponseFailure(GENERIC_RESPONSE_TYPE, GENERIC_RESPONSE_MESSAGE)
+    response = res.ResponseFailure(
+        GENERIC_RESPONSE_TYPE, GENERIC_RESPONSE_MESSAGE
+    )
 
     assert bool(response) is False
 
 
 def test_response_failure_has_type_and_message() -> None:
     """It has failure type and message."""
-    response = res.ResponseFailure(GENERIC_RESPONSE_TYPE, GENERIC_RESPONSE_MESSAGE)
+    response = res.ResponseFailure(
+        GENERIC_RESPONSE_TYPE, GENERIC_RESPONSE_MESSAGE
+    )
 
     assert response.type == GENERIC_RESPONSE_TYPE
     assert response.message == GENERIC_RESPONSE_MESSAGE

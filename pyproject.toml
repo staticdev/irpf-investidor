@@ -61,6 +61,21 @@ source = ["irpf_investidor", "tests"]
 show_missing = true
 fail_under = 99
 
+[tool.ruff]
+line-length = 80
+
+[tool.ruff.lint]
+select = ["B", "B9", "C", "D", "E", "F", "N", "W"]
+ignore = ["E203", "E501", "B905"]
+per-file-ignores = { "times.py" = ["N806"] }
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+force-single-line = true
+lines-after-imports = 2
+
 [tool.mypy]
 strict = true
 warn_unreachable = true

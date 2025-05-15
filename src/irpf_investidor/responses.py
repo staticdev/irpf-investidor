@@ -21,25 +21,14 @@ class ResponseFailure:
         self.message = self._format_message(message)
 
     def _format_message(self, msg: str | Exception | None) -> str | None:
-        """Format message when it is an exception.
-
-        Args:
-            msg: string, exception or None.
-
-        Returns:
-            Union[str, None]: formatted message or None.
-        """
+        """Format message when it is an exception."""
         if isinstance(msg, Exception):
             return f"{msg.__class__.__name__}: {msg}"
         return msg
 
     @property
     def value(self) -> dict[str, str | None]:
-        """Value property.
-
-        Returns:
-            Dict[str, str]: type and message.
-        """
+        """Value property."""
         return {"type": self.type, "message": self.message}
 
     def __bool__(self) -> bool:
