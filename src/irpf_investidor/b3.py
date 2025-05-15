@@ -69,12 +69,12 @@ EMOLUMENTOS_PERIODS = [
     RatePeriod(
         datetime.datetime(2020, 11, 1), datetime.datetime(2021, 2, 2), 0.00003247
     ),
-    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2025, 14, 5), 0.00005),
+    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2025, 5, 15), 0.00005),
 ]
 EMOLUMENTOS_AUCTION_RATE = 0.00007
 LIQUIDACAO_PERIODS = [
     RatePeriod(datetime.datetime(2019, 1, 3), datetime.datetime(2021, 2, 2), 0.000275),
-    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2025, 14, 5), 0.00025),
+    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2025, 5, 15), 0.00025),
 ]
 
 AssetInfo = collections.namedtuple("AssetInfo", ["category", "cnpj"])
