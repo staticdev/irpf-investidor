@@ -65,13 +65,17 @@ def cwd(fs: MockerFixture, monkeypatch: MockerFixture) -> None:
     monkeypatch.setenv("HOME", "/home")
 
 
-def test_get_xls_filename_not_found(fs: MockerFixture, cwd: MockerFixture) -> None:
+def test_get_xls_filename_not_found(
+    fs: MockerFixture, cwd: MockerFixture
+) -> None:
     """Raise `SystemExit` when file is not found."""
     with pytest.raises(SystemExit):
         assert report_reader.get_xls_filename()
 
 
-def test_get_xls_filename_current_folder(fs: MockerFixture, cwd: MockerFixture) -> None:
+def test_get_xls_filename_current_folder(
+    fs: MockerFixture, cwd: MockerFixture
+) -> None:
     """Return filename found in current folder."""
     fs.create_file(f"/path/{B3_REPORT_NAME}")
     assert report_reader.get_xls_filename() == B3_REPORT_NAME
@@ -108,7 +112,9 @@ def test_validate_period_wrong_start_finish() -> None:
     )
 
 
-def test_validate_header_empty_file(fs: MockerFixture, cwd: MockerFixture) -> None:
+def test_validate_header_empty_file(
+    fs: MockerFixture, cwd: MockerFixture
+) -> None:
     """Raise `SystemExit` from empty file."""
     path = os.path.join("path", "Inforeport_reader.xls")
     fs.create_file(path)
@@ -144,7 +150,9 @@ def test_clean_table_cols() -> None:
             "all_missing2": [None, None, None],
         }
     )
-    expected_df = pd.DataFrame({"full_valued": [1, 2, 3], "some_missing": [None, 2, 3]})
+    expected_df = pd.DataFrame(
+        {"full_valued": [1, 2, 3], "some_missing": [None, 2, 3]}
+    )
     result_df = report_reader.clean_table_cols(df)
     pd.testing.assert_frame_equal(result_df, expected_df)
 
@@ -172,7 +180,14 @@ def test_group_trades() -> None:
     df = pd.DataFrame(
         {
             "Data Negócio": ["1", "1", "2", "2", "2", "2"],
-            "Código": ["BOVA11", "PETR4", "PETR4", "BOVA11", "BOVA11", "BOVA11"],
+            "Código": [
+                "BOVA11",
+                "PETR4",
+                "PETR4",
+                "BOVA11",
+                "BOVA11",
+                "BOVA11",
+            ],
             "C/V": [" C ", " V ", " V ", " V ", " C ", " C "],
             "Quantidade": [20, 30, 50, 80, 130, 210],
             "Valor Total (R$)": [10.20, 30.50, 80.13, 210.34, 550.89, 144.233],
@@ -208,7 +223,9 @@ def test_group_trades() -> None:
 
 def test_calculate_taxes_2019(mocker: MockerFixture) -> None:
     """Return calculated taxes."""
-    mocker.patch("irpf_investidor.b3.get_liquidacao_rates", return_value=0.000275)
+    mocker.patch(
+        "irpf_investidor.b3.get_liquidacao_rates", return_value=0.000275
+    )
     mocker.patch(
         "irpf_investidor.b3.get_emolumentos_rates",
         return_value=[0.00004105, 0.00004105, 0.00004105],
@@ -329,7 +346,8 @@ def test_goods_and_rights(
     mocker.patch("irpf_investidor.report_reader.buy_sell_columns")
     mocker.patch("irpf_investidor.report_reader.group_buys_sells")
     mocker.patch(
-        "irpf_investidor.report_reader.average_price", return_value=pd.DataFrame()
+        "irpf_investidor.report_reader.average_price",
+        return_value=pd.DataFrame(),
     )
 
     df = report_reader.goods_and_rights(pd.DataFrame())

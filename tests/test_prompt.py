@@ -34,7 +34,9 @@ def test_select_trades_empty(
     assert result == []
 
 
-def test_select_trades_some_selected(mock_checkboxlist_dialog: MockerFixture) -> None:
+def test_select_trades_some_selected(
+    mock_checkboxlist_dialog: MockerFixture,
+) -> None:
     """It returns list with id 1."""
     mock_checkboxlist_dialog.return_value.run.return_value = [1]
 

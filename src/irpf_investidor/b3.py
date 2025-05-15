@@ -4,9 +4,11 @@ import collections
 import datetime
 import sys
 
-RatePeriod = collections.namedtuple("RatePeriod", ["start_date", "end_date", "rate"])
+RatePeriod = collections.namedtuple(
+    "RatePeriod", ["start_date", "end_date", "rate"]
+)
 
-# Ref: https://www.b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/renda-variavel/tarifas-de-acoes-e-fundos-de-investimento/a-vista/  # noqa: B950
+# Ref: https://www.b3.com.br/pt_br/produtos-e-servicos/tarifas/listados-a-vista-e-derivativos/renda-variavel/tarifas-de-acoes-e-fundos-de-investimento/a-vista/
 EMOLUMENTOS_PERIODS = [
     RatePeriod(
         datetime.datetime(2019, 1, 3), datetime.datetime(2019, 2, 1), 0.00004476
@@ -17,7 +19,9 @@ EMOLUMENTOS_PERIODS = [
     RatePeriod(
         datetime.datetime(2019, 3, 6), datetime.datetime(2019, 4, 1), 0.00004157
     ),
-    RatePeriod(datetime.datetime(2019, 4, 2), datetime.datetime(2019, 5, 2), 0.0000408),
+    RatePeriod(
+        datetime.datetime(2019, 4, 2), datetime.datetime(2019, 5, 2), 0.0000408
+    ),
     RatePeriod(
         datetime.datetime(2019, 5, 3), datetime.datetime(2019, 6, 3), 0.00004408
     ),
@@ -31,18 +35,28 @@ EMOLUMENTOS_PERIODS = [
         datetime.datetime(2019, 8, 2), datetime.datetime(2019, 9, 2), 0.00004115
     ),
     RatePeriod(
-        datetime.datetime(2019, 9, 3), datetime.datetime(2019, 10, 1), 0.00003756
+        datetime.datetime(2019, 9, 3),
+        datetime.datetime(2019, 10, 1),
+        0.00003756,
     ),
     RatePeriod(
-        datetime.datetime(2019, 10, 2), datetime.datetime(2019, 11, 1), 0.00004105
+        datetime.datetime(2019, 10, 2),
+        datetime.datetime(2019, 11, 1),
+        0.00004105,
     ),
     RatePeriod(
-        datetime.datetime(2019, 11, 4), datetime.datetime(2019, 12, 2), 0.0000411
+        datetime.datetime(2019, 11, 4),
+        datetime.datetime(2019, 12, 2),
+        0.0000411,
     ),
     RatePeriod(
-        datetime.datetime(2019, 12, 3), datetime.datetime(2020, 1, 1), 0.00003802
+        datetime.datetime(2019, 12, 3),
+        datetime.datetime(2020, 1, 1),
+        0.00003802,
     ),
-    RatePeriod(datetime.datetime(2020, 1, 1), datetime.datetime(2020, 2, 1), 0.0000366),
+    RatePeriod(
+        datetime.datetime(2020, 1, 1), datetime.datetime(2020, 2, 1), 0.0000366
+    ),
     RatePeriod(
         datetime.datetime(2020, 2, 1), datetime.datetime(2020, 3, 1), 0.00003462
     ),
@@ -52,29 +66,45 @@ EMOLUMENTOS_PERIODS = [
     RatePeriod(
         datetime.datetime(2020, 4, 1), datetime.datetime(2020, 5, 1), 0.00003006
     ),
-    RatePeriod(datetime.datetime(2020, 5, 1), datetime.datetime(2020, 6, 3), 0.0000334),
+    RatePeriod(
+        datetime.datetime(2020, 5, 1), datetime.datetime(2020, 6, 3), 0.0000334
+    ),
     RatePeriod(
         datetime.datetime(2020, 6, 1), datetime.datetime(2020, 7, 1), 0.00003291
     ),
     RatePeriod(
         datetime.datetime(2020, 7, 1), datetime.datetime(2020, 8, 1), 0.00003089
     ),
-    RatePeriod(datetime.datetime(2020, 8, 1), datetime.datetime(2020, 9, 1), 0.0000318),
     RatePeriod(
-        datetime.datetime(2020, 9, 1), datetime.datetime(2020, 10, 1), 0.00003125
+        datetime.datetime(2020, 8, 1), datetime.datetime(2020, 9, 1), 0.0000318
     ),
     RatePeriod(
-        datetime.datetime(2020, 10, 1), datetime.datetime(2020, 11, 1), 0.00003219
+        datetime.datetime(2020, 9, 1),
+        datetime.datetime(2020, 10, 1),
+        0.00003125,
     ),
     RatePeriod(
-        datetime.datetime(2020, 11, 1), datetime.datetime(2021, 2, 2), 0.00003247
+        datetime.datetime(2020, 10, 1),
+        datetime.datetime(2020, 11, 1),
+        0.00003219,
     ),
-    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2025, 5, 15), 0.00005),
+    RatePeriod(
+        datetime.datetime(2020, 11, 1),
+        datetime.datetime(2021, 2, 2),
+        0.00003247,
+    ),
+    RatePeriod(
+        datetime.datetime(2021, 2, 2), datetime.datetime(2025, 5, 15), 0.00005
+    ),
 ]
 EMOLUMENTOS_AUCTION_RATE = 0.00007
 LIQUIDACAO_PERIODS = [
-    RatePeriod(datetime.datetime(2019, 1, 3), datetime.datetime(2021, 2, 2), 0.000275),
-    RatePeriod(datetime.datetime(2021, 2, 2), datetime.datetime(2025, 5, 15), 0.00025),
+    RatePeriod(
+        datetime.datetime(2019, 1, 3), datetime.datetime(2021, 2, 2), 0.000275
+    ),
+    RatePeriod(
+        datetime.datetime(2021, 2, 2), datetime.datetime(2025, 5, 15), 0.00025
+    ),
 ]
 
 AssetInfo = collections.namedtuple("AssetInfo", ["category", "cnpj"])
@@ -690,14 +720,7 @@ CNPJ_INSTITUTIONS = {
 
 
 def get_asset_info(code: str) -> AssetInfo:
-    """Return asset info.
-
-    Args:
-        code: asset code.
-
-    Returns:
-        AssetInfo: category and cnpj.
-    """
+    """Return asset info."""
     if code in STOCKS:
         return AssetInfo("STOCKS", STOCKS[code])
     # STOCKS CAN END IN F
@@ -717,14 +740,7 @@ def get_asset_info(code: str) -> AssetInfo:
 
 
 def get_liquidacao_rates(dates: list[datetime.datetime]) -> list[float]:
-    """Get the list of liquidação rates.
-
-    Args:
-        dates: list of trade days.
-
-    Returns:
-        list of rates.
-    """
+    """Get the list of liquidação rates."""
     rates = []
     last_period = 0
     for date in dates:
@@ -736,22 +752,16 @@ def get_liquidacao_rates(dates: list[datetime.datetime]) -> list[float]:
                 rates.append(period.rate)
                 break
         else:
-            sys.exit(f"Nenhum período de liquidação encontrado para a data: {date}")
+            sys.exit(
+                f"Nenhum período de liquidação encontrado para a data: {date}"
+            )
     return rates
 
 
 def get_emolumentos_rates(
     dates: list[datetime.datetime], auction_trades: list[int]
 ) -> list[float]:
-    """Get the list of emolumentos rates.
-
-    Args:
-        dates: list of trade days.
-        auction_trades: list of indexes of trades in auction.
-
-    Returns:
-        list of rates.
-    """
+    """Get the list of emolumentos rates."""
     rates = []
     last_period = 0
     for date in dates:
@@ -763,21 +773,16 @@ def get_emolumentos_rates(
                 rates.append(period.rate)
                 break
         else:
-            sys.exit(f"Nenhum período de emolumentos encontrado para a data: {date}")
+            sys.exit(
+                f"Nenhum período de emolumentos encontrado para a data: {date}"
+            )
     for trade in auction_trades:
         rates[trade] = EMOLUMENTOS_AUCTION_RATE
     return rates
 
 
 def get_cnpj_institution(institution: str) -> str:
-    """Return CNPJ of institution.
-
-    Args:
-        institution (str): full institution description.
-
-    Returns:
-        str: CNPJ or not found message.
-    """
+    """Return CNPJ of institution."""
     b3_code = institution.split(" - ")[0]
     if b3_code in CNPJ_INSTITUTIONS:
         return CNPJ_INSTITUTIONS[b3_code]

@@ -23,13 +23,17 @@ def main() -> None:
     filename = irpf_investidor.report_reader.get_xls_filename()
     click.secho(f"Nome do arquivo: {filename}", fg="blue")
 
-    ref_year, institution = irpf_investidor.report_reader.validate_header(filename)
+    ref_year, institution = irpf_investidor.report_reader.validate_header(
+        filename
+    )
     source_df = irpf_investidor.report_reader.read_xls(filename)
     source_df = irpf_investidor.report_reader.clean_table_cols(source_df)
     source_df = irpf_investidor.report_reader.group_trades(source_df)
     trades = irpf_investidor.report_reader.get_trades(source_df)
     auction_trades = prompt.select_trades(trades)
-    tax_df = irpf_investidor.report_reader.calculate_taxes(source_df, auction_trades)
+    tax_df = irpf_investidor.report_reader.calculate_taxes(
+        source_df, auction_trades
+    )
     irpf_investidor.report_reader.output_taxes(tax_df)
     result_df = irpf_investidor.report_reader.goods_and_rights(tax_df)
     irpf_investidor.report_reader.output_goods_and_rights(

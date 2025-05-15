@@ -58,14 +58,7 @@ def validate_period(first: str, second: str) -> int:
 
 
 def validate_header(filepath: str) -> tuple[int, str]:
-    """Validate file header.
-
-    Arguments:
-        filepath: CEI report's full path
-
-    Returns:
-        Tuple[int, str]: reference year for the report and institution name if valid.
-    """
+    """Validate file header."""
     try:
         basic_df = pd.read_excel(
             filepath,
@@ -88,14 +81,7 @@ def validate_header(filepath: str) -> tuple[int, str]:
 
 
 def read_xls(filename: str) -> pd.DataFrame:
-    """Read xls.
-
-    Args:
-        filename (str): name of XLS file.
-
-    Returns:
-        pd.DataFrame: content of the file.
-    """
+    """Read xls."""
     df = pd.read_excel(
         filename,
         usecols="B:K",
@@ -109,40 +95,18 @@ def read_xls(filename: str) -> pd.DataFrame:
 
 # Source: https://realpython.com/python-rounding/
 def round_down_money(n: float, decimals: int = 2) -> float:
-    """Round float on second decimal cases.
-
-    Args:
-        n (float): number.
-        decimals (int): Number of decimal cases. Defaults to 2.
-
-    Returns:
-        float: rounded number.
-    """
+    """Round float on second decimal cases."""
     multiplier = 10**decimals
     return math.floor(n * multiplier) / multiplier  # type: ignore
 
 
 def clean_table_cols(source_df: pd.DataFrame) -> pd.DataFrame:
-    """Drop columns without values.
-
-    Args:
-        source_df (pd.DataFrame): full columns DataFrame.
-
-    Returns:
-        pd.DataFrame: DataFrame without columns with no value.
-    """
+    """Drop columns without values."""
     return source_df.dropna(axis="columns", how="all")
 
 
 def get_trades(df: pd.DataFrame) -> list[tuple[int, str]]:
-    """Return trades representations.
-
-    Args:
-        df (pd.DataFrame): trades DataFrame.
-
-    Returns:
-        trades: list of df indexes and string representations.
-    """
+    """Return trades representations."""
     df["total_cost_rs"] = df["Valor Total (R$)"].apply(
         lambda x: "R$ " + str(f"{x:.2f}".replace(".", ","))
     )
@@ -153,14 +117,7 @@ def get_trades(df: pd.DataFrame) -> list[tuple[int, str]]:
 
 
 def group_trades(df: pd.DataFrame) -> pd.DataFrame:
-    """Group trades by day, asset and action.
-
-    Args:
-        df (pd.DataFrame): ungrouped trades.
-
-    Returns:
-        pd.DataFrame: grouped trades.
-    """
+    """Group trades by day, asset and action."""
     return (
         df.groupby(["Data Negócio", "Código", "C/V"])
         .agg(
@@ -174,16 +131,10 @@ def group_trades(df: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def calculate_taxes(df: pd.DataFrame, auction_trades: list[int]) -> pd.DataFrame:
-    """Calculate emolumentos and liquidação taxes based on reference year.
-
-    Args:
-        df: grouped trades.
-        auction_trades: list of auction trades.
-
-    Returns:
-        pd.DataFrame: trades with two new columns of calculated taxes.
-    """
+def calculate_taxes(
+    df: pd.DataFrame, auction_trades: list[int]
+) -> pd.DataFrame:
+    """Calculate emolumentos and liquidação taxes based on reference year."""
     df["Liquidação (R$)"] = (
         df["Valor Total (R$)"]
         * irpf_investidor.b3.get_liquidacao_rates(df["Data Negócio"].array)
@@ -198,21 +149,18 @@ def calculate_taxes(df: pd.DataFrame, auction_trades: list[int]) -> pd.DataFrame
 
 
 def buy_sell_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Create columns for buys and sells with quantity and total value.
-
-    Args:
-        df (pd.DataFrame): grouped trades.
-
-    Returns:
-        pd.DataFrame: grouped trades with four new columns of buys and sells.
-    """
-    df["Quantidade Compra"] = df["Quantidade"].where(df["C/V"].str.contains("C"), 0)
+    """Create columns for buys and sells with quantity and total value."""
+    df["Quantidade Compra"] = df["Quantidade"].where(
+        df["C/V"].str.contains("C"), 0
+    )
     df["Custo Total Compra (R$)"] = (
         df[["Valor Total (R$)", "Liquidação (R$)", "Emolumentos (R$)"]]
         .sum(axis="columns")
         .where(df["C/V"].str.contains("C"), 0)
     ).round(decimals=2)
-    df["Quantidade Venda"] = df["Quantidade"].where(df["C/V"].str.contains("V"), 0)
+    df["Quantidade Venda"] = df["Quantidade"].where(
+        df["C/V"].str.contains("V"), 0
+    )
     df["Custo Total Venda (R$)"] = (
         df[["Valor Total (R$)", "Liquidação (R$)", "Emolumentos (R$)"]]
         .sum(axis="columns")
@@ -223,14 +171,7 @@ def buy_sell_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def group_buys_sells(df: pd.DataFrame) -> pd.DataFrame:
-    """Group buys and sells by asset.
-
-    Args:
-        df (pd.DataFrame): ungrouped buys and sells.
-
-    Returns:
-        pd.DataFrame: grouped buys and sells.
-    """
+    """Group buys and sells by asset."""
     return (
         df.groupby(["Código"])
         .agg(
@@ -248,27 +189,15 @@ def group_buys_sells(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def average_price(df: pd.DataFrame) -> pd.DataFrame:
-    """Compute average price.
-
-    Args:
-        df (pd.DataFrame): buys and sells without average price.
-
-    Returns:
-        pd.DataFrame: buys and sells with average price.
-    """
-    df["Preço Médio (R$)"] = df["Custo Total Compra (R$)"] / df["Quantidade Compra"]
+    """Compute average price."""
+    df["Preço Médio (R$)"] = (
+        df["Custo Total Compra (R$)"] / df["Quantidade Compra"]
+    )
     return df
 
 
 def goods_and_rights(source_df: pd.DataFrame) -> pd.DataFrame:
-    """Call methods for goods and rights.
-
-    Args:
-        source_df (pd.DataFrame): raw DataFrame.
-
-    Returns:
-        pd.DataFrame: goods and rights DataFrame.
-    """
+    """Call methods for goods and rights."""
     result_df = buy_sell_columns(source_df)
     result_df = group_buys_sells(source_df)
     result_df = average_price(result_df)
@@ -276,20 +205,23 @@ def goods_and_rights(source_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def output_taxes(tax_df: pd.DataFrame) -> None:
-    """Print tax DataFrame.
-
-    Args:
-        tax_df (pd.DataFrame): calculated tax columns.
-    """
-    with pd.option_context("display.max_rows", None, "display.max_columns", None):
-        print("Valores calculados de emolumentos, liquidação e custo total:\n", tax_df)
+    """Print tax DataFrame."""
+    with pd.option_context(
+        "display.max_rows", None, "display.max_columns", None
+    ):
+        print(
+            "Valores calculados de emolumentos, liquidação e custo total:\n",
+            tax_df,
+        )
 
 
 def output_goods_and_rights(
     result_df: pd.DataFrame, ref_year: int, institution: str
 ) -> None:
     """Return a list of assets."""
-    pd.set_option("float_format", irpf_investidor.formatting.get_currency_format())
+    pd.set_option(
+        "float_format", irpf_investidor.formatting.get_currency_format()
+    )
     print("========= Bens e Direitos =========")
     for row in result_df.iterrows():
         idx = row[0]
