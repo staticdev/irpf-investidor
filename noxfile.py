@@ -21,8 +21,7 @@ except ImportError:
 
 
 package = "irpf_investidor"
-python_versions = ["3.12", "3.11", "3.10"]
-nox.needs_version = ">= 2021.6.6"
+python_versions = ["3.13", "3.12", "3.11"]
 nox.options.sessions = (
     "pre-commit",
     "mypy",

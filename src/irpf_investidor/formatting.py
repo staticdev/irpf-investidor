@@ -2,7 +2,7 @@
 
 import locale
 import math
-from typing import Callable
+from collections.abc import Callable
 
 import irpf_investidor.responses as res
 
