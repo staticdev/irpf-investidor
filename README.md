@@ -27,22 +27,15 @@ Programa auxiliar para calcular custos de ações, ETFs e FIIs. Este programa fo
 
 1. Python
 
-Instale na sua máquina o Python 3.11.0 ou superior (versão 3.11 recomendada) para o seu sistema operacional em [python.org].
+   Instale na sua máquina o Python 3.11.0 ou superior (versão 3.11 recomendada) para o seu sistema operacional em [python.org].
 
-Usuários do Windows devem baixar a versão `Windows x86-64 executable installer` e na tela de instalação marcar a opção `Add Python 3.11 to PATH`:
+1. Suporte a língua Português (Brasil) no seu sistema operacional.
 
-```{image} docs/images/winpath.png
-:alt: "Checkbox PATH na instala\xE7\xE3o Windows"
-:width: 400
-```
+   Pode ser instalado no Linux (Debian/Ubuntu) pelo comando:
 
-2. Suporte a língua Português (Brasil) no seu sistema operacional.
-
-Pode ser instalado no Linux (Debian/Ubuntu) pelo comando:
-
-```sh
-$ apt-get install language-pack-pt-base
-```
+   ```sh
+   $ apt-get install language-pack-pt-base
+   ```
 
 ## Instalação
 
