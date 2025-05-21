@@ -138,11 +138,10 @@ jobs:
       - name: Combine coverage data and display human readable report
         run: |
           shopt -s dotglob
-          mv coverage-data-3.10-windows-latest/* .
+          mv coverage-data-3.13-ubuntu-latest/* .
           mv coverage-data-3.12-ubuntu-latest/* .
           mv coverage-data-3.11-ubuntu-latest/* .
-          mv coverage-data-3.10-ubuntu-latest/* .
-          mv coverage-data-3.12-macos-latest/* .
+          mv coverage-data-3.13-macos-latest/* .
           nox --force-color --session=coverage
 
       - name: Create coverage report
