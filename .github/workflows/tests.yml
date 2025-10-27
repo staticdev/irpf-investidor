@@ -133,7 +133,7 @@ jobs:
           nox --version
 
       - name: Download coverage data
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
 
       - name: Combine coverage data and display human readable report
         run: |
