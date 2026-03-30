@@ -12,12 +12,6 @@ import irpf_investidor.report_reader as report_reader
 B3_REPORT_NAME = "InfoCEI.xls"
 
 
-def test_date_parse() -> None:
-    """Return datetime."""
-    expected = datetime.datetime(day=1, month=2, year=2019)
-    assert report_reader.date_parse(" 01/02/19 ") == expected
-
-
 @pytest.fixture
 def mock_pandas_read_excel(mocker: MockerFixture) -> MockerFixture:
     """Fixture for mocking pandas.read_excel."""

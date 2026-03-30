@@ -1,6 +1,5 @@
 """Report reader."""
 
-import datetime
 import glob
 import math
 import os
@@ -12,6 +11,7 @@ import xlrd
 import irpf_investidor.b3
 import irpf_investidor.formatting
 
+DATE_FORMAT = "%d/%m/%y"
 IRPF_INVESTIMENT_CODES = {
     "ETF": "74 (ETF)",
     "FII": "73 (FII)",
@@ -36,11 +36,6 @@ def get_xls_filename() -> str:
     )
 
 
-def date_parse(value: str) -> datetime.datetime:
-    """Parse dates from CEI report."""
-    return datetime.datetime.strptime(value.strip(), "%d/%m/%y")
-
-
 def validate_period(first: str, second: str) -> int:
     """Consider the year from the first trade date."""
     first_year = int(first[-4:])
@@ -63,7 +58,7 @@ def validate_header(filepath: str) -> tuple[int, str]:
         basic_df = pd.read_excel(
             filepath,
             usecols="B",
-            date_parser=date_parse,
+            date_format=DATE_FORMAT,
             skiprows=4,
         )
     # exits if empty
@@ -86,7 +81,7 @@ def read_xls(filename: str) -> pd.DataFrame:
         filename,
         usecols="B:K",
         parse_dates=["Data Negócio"],
-        date_parser=date_parse,
+        date_format=DATE_FORMAT,
         skipfooter=4,
         skiprows=10,
     )
